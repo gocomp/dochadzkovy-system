@@ -1,0 +1,346 @@
+object ciszamest: Tciszamest
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'ciszamest'
+  ClientHeight = 446
+  ClientWidth = 702
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 8
+    Top = -3
+    Width = 686
+    Height = 441
+    Caption = 'Panel1'
+    TabOrder = 0
+    object RzDBGrid1: TRzDBGrid
+      Left = -8
+      Top = 8
+      Width = 689
+      Height = 378
+      DataSource = CMForm.Dzamest
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'zamcislo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Priezvisko'
+          Width = 80
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Meno'
+          Width = 80
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Karta'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'sadzbahod'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'praccas'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'heslo'
+          Width = 30
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'privileg'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'enabled'
+          Visible = True
+        end>
+    end
+    object RzButton1: TRzButton
+      Left = 552
+      Top = 392
+      Width = 121
+      Height = 41
+      Caption = 'Zru'#353'i'#357
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      OnClick = RzButton1Click
+    end
+    object RzButton2: TRzButton
+      Left = 296
+      Top = 392
+      Width = 122
+      Height = 41
+      Caption = 'Prida'#357
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = RzButton2Click
+    end
+    object RzButton3: TRzButton
+      Left = 424
+      Top = 392
+      Width = 122
+      Height = 41
+      Caption = 'Vymaza'#357
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = RzButton3Click
+    end
+    object Button1: TButton
+      Left = 8
+      Top = 392
+      Width = 129
+      Height = 41
+      Caption = 'Odoslat do DEV'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 143
+      Top = 392
+      Width = 147
+      Height = 41
+      Caption = 'Odoslat V. do DEV'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      OnClick = Button2Click
+    end
+  end
+  object RzPanel1: TRzPanel
+    Left = 105
+    Top = 72
+    Width = 457
+    Height = 209
+    TabOrder = 1
+    Visible = False
+    object RzButton4: TRzButton
+      Left = 335
+      Top = 163
+      Width = 105
+      Height = 33
+      Caption = 'Zru'#353'i'#357
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = RzButton4Click
+    end
+    object RzDBEdit1: TRzDBEdit
+      Left = 25
+      Top = 34
+      Width = 145
+      Height = 21
+      DataSource = CMForm.Dzamest
+      DataField = 'zamcislo'
+      Alignment = taRightJustify
+      TabOrder = 1
+    end
+    object StaticText1: TStaticText
+      Left = 25
+      Top = 11
+      Width = 96
+      Height = 23
+      Caption = 'Zamest. '#269#237'slo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object RzButton5: TRzButton
+      Left = 231
+      Top = 163
+      Width = 90
+      Height = 33
+      Caption = 'Ulo'#382'i'#357
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = RzButton5Click
+    end
+    object StaticText2: TStaticText
+      Left = 184
+      Top = 11
+      Width = 45
+      Height = 23
+      Caption = 'RFID:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object RzDBEdit2: TRzDBEdit
+      Left = 184
+      Top = 79
+      Width = 249
+      Height = 21
+      DataSource = CMForm.Dzamest
+      DataField = 'Priezvisko'
+      TabOrder = 5
+    end
+    object RzDBEdit4: TRzDBEdit
+      Left = 25
+      Top = 79
+      Width = 145
+      Height = 21
+      DataSource = CMForm.Dzamest
+      DataField = 'Meno'
+      TabOrder = 6
+    end
+    object StaticText3: TStaticText
+      Left = 184
+      Top = 55
+      Width = 80
+      Height = 23
+      Caption = 'Priezvisko:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object StaticText4: TStaticText
+      Left = 25
+      Top = 55
+      Width = 48
+      Height = 23
+      Caption = 'Meno:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+    end
+    object RzDBEdit5: TRzDBEdit
+      Left = 184
+      Top = 126
+      Width = 249
+      Height = 21
+      DataSource = CMForm.Dzamest
+      DataField = 'sadzbahod'
+      Alignment = taRightJustify
+      TabOrder = 9
+    end
+    object RzDBEdit6: TRzDBEdit
+      Left = 25
+      Top = 126
+      Width = 145
+      Height = 21
+      DataSource = CMForm.Dzamest
+      DataField = 'praccas'
+      Alignment = taRightJustify
+      TabOrder = 10
+    end
+    object StaticText5: TStaticText
+      Left = 184
+      Top = 101
+      Width = 60
+      Height = 23
+      Caption = 'Sadzba:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
+    end
+    object StaticText6: TStaticText
+      Left = 25
+      Top = 101
+      Width = 101
+      Height = 23
+      Caption = 'Pracovn'#253' '#269'as:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 184
+      Top = 34
+      Width = 249
+      Height = 21
+      DataField = 'Karta'
+      DataSource = CMForm.Dzamest
+      KeyField = 'ID'
+      ListField = 'cislokarty'
+      ListSource = CMForm.Dcislokarty
+      TabOrder = 13
+    end
+  end
+end
