@@ -34,22 +34,6 @@ object rfid: Trfid
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'ID'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'cislokarty'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'used'
-          Visible = True
-        end>
     end
     object RzButton1: TRzButton
       Left = 448

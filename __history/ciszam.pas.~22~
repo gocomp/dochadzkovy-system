@@ -67,6 +67,7 @@ var
   user: IUserExt;
   i: integer;
    enrolls0: array of IEnrollExt;
+
 begin
   // Set user name
 
@@ -90,42 +91,41 @@ begin
     CMForm.cislokarty.Filtered:=false;
 
   SafeArrayUnaccessData(user.enrolls);
-
+  result:=false;
   bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserEnroll,
     extraProperty, user, extraData);
   if bRet then
   begin
-   bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserName,
+    bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserName,
       extraProperty, user, extraData);
     if bRet then
     begin
-      ShowMessage('Odoslane');
-    end
-    else
-    begin
-      ShowMessage('Chyba: Neodoslane - skuste znova');
+      result:=true;
     end;
-
-  end
-  else
-  begin
-   // ShowMessage('set card: Fail');
   end;
+      CMForm.closedev;
 
-
-
-
-    CMForm.closedev;
 
 end;
 
 procedure Tciszamest.Button1Click(Sender: TObject);
+var bRet:boolean;
+i:integer;
 begin
 
   for i := 1 to 3 do
    begin
-      odoslat(i);
+      bRet:=odoslat(i);
+      if not bRet then
+          exit;
    end;
+
+   if bRet then
+         ShowMessage('Odoslane')
+     else
+         ShowMessage('Neodoslane skuste znova!')
+
+
 end;
 
 procedure Tciszamest.Button2Click(Sender: TObject);
@@ -152,23 +152,17 @@ var
 begin
   // Show a confirmation dialog
   buttonSelected :=
-    messagedlg('RFID ' + inttostr(CMForm.cislokartycislokarty.Value) + '.' +
-    chr(10) + chr(13) + ' Naozaj chcete vymazaù?', mtError, mbOKCancel, 0);
+    messagedlg(' ' + CMForm.ZamestPriezvisko.Value+' '+CMForm.ZamestMeno.Value+ '.' +
+    chr(10) + chr(13) + ' Naozaj chcete vymazaù?', mtConfirmation, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-    if not CMForm.cislokartyused.Value then
-    begin
+      CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 0  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
+      CMForm.fbtemp.ExecSQL;
       CMForm.cislokarty.Delete;
       ShowMessage('VymazanÈ');
-    end
-    else
-    begin
-      ShowMessage('RFID sa pouûÌv·!!! NevymazanÈ');
-    end
-
-  end;
+    end;
 
 end;
 
@@ -183,6 +177,9 @@ end;
 procedure Tciszamest.RzButton5Click(Sender: TObject);
 begin
   CMForm.Zamest.post;
+
+CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 1  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
+CMForm.fbtemp.ExecSQL;
 
   RzPanel1.Visible := false;
 

@@ -103,7 +103,6 @@ type
     dovodnazov: TStringField;
     dovodplatene: TBooleanField;
     RzRegIniFile1: TRzRegIniFile;
-    fbtemp: TFDQuery;
     procedure btnSysSettingsClick(Sender: TObject);
     procedure btnAlarmSettingsClick(Sender: TObject);
     procedure btnMessageSettingsClick(Sender: TObject);
@@ -125,6 +124,7 @@ type
     procedure RzButton4Click(Sender: TObject);
     procedure opendev(id: integer);
     procedure closedev();
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     procedure SetDeviceInfo(ADevice: IDevice; DN: integer; IpAdress: string;
@@ -140,8 +140,6 @@ var
   gIDevice: IDevice;
   gDeviceConnection: TZd2911DeviceConnection;
   gDeviceTools: TZd2911Tools;
-  devnum:integer;
-
 
 implementation
 
@@ -218,23 +216,17 @@ begin
 end;
 
 procedure TCMForm.FormCreate(Sender: TObject);
-var
-webupdate,dbfile:string;
 begin
   inherited;
-devnum:=RzRegIniFile1.readInteger('DEV','number',1);
-webupdate:=RzRegIniFile1.readString('WEB','adress','http://www.gocomp.sk/doch.exe');
-dbfile:=RzRegIniFile1.ReadString('DB','dbfile','dochlit');
-FDConnection1.Params.Database:=dbfile;
-FDConnection1.Connected:=true;
-jottment.Active:=true;
-Zamest.Active:=true;
-Nastavenie.Active:=true;
-caslog.Active:=true;
-dovod.Active:=true;
-cislokarty.Active:=true;
+
 //  SetButtonStatus(False);
 
+end;
+
+procedure TCMForm.FormShow(Sender: TObject);
+begin
+RzRegIniFile1.WriteInteger('DEV','number',3);
+RzRegIniFile1.UpdateIniFile;
 end;
 
 procedure TCMForm.RzButton1Click(Sender: TObject);

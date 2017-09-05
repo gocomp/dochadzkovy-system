@@ -34,22 +34,6 @@ object rfid: Trfid
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'ID'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'cislokarty'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'used'
-          Visible = True
-        end>
     end
     object RzButton1: TRzButton
       Left = 448
@@ -126,6 +110,7 @@ object rfid: Trfid
       Height = 21
       DataSource = CMForm.Dcislokarty
       DataField = 'cislokarty'
+      Alignment = taRightJustify
       TabOrder = 1
     end
     object StaticText1: TStaticText

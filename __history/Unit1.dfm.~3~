@@ -50,7 +50,7 @@ object IWForm1: TIWForm1
     DebugLog = False
     RunIn = wbDefault
     RunSSL = False
-    Left = 248
-    Top = 136
+    Left = 328
+    Top = 96
   end
 end

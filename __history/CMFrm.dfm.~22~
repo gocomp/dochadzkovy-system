@@ -33,6 +33,7 @@
     Height = 90
     Caption = 'Function'
     TabOrder = 1
+    Visible = False
     object btnSysSettings: TButton
       Left = 302
       Top = 17
@@ -119,7 +120,7 @@
     Top = 54
     Width = 628
     Height = 358
-    DataSource = Dcas
+    DataSource = dbjottment
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -129,25 +130,30 @@
     Columns = <
       item
         Expanded = False
-        FieldName = 'userid'
-        Width = 50
+        FieldName = 'prichod'
+        Width = 85
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'datumcas'
+        FieldName = 'odchod'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'deviceid'
-        Width = 45
+        FieldName = 'platene'
+        Width = 52
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'verifymode'
-        Width = 109
+        FieldName = 'dovod'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cascelkom'
         Visible = True
       end>
   end
@@ -226,7 +232,6 @@
       'DateTimeFormat=DateTime'
       'DriverID=SQLite')
     FetchOptions.AssignedValues = [evUnidirectional]
-    Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
     Left = 880
@@ -238,19 +243,19 @@
     Top = 232
   end
   object Nastavenie: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
     UpdateTransaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'Nastavenie'
     TableName = 'Nastavenie'
-    Left = 880
-    Top = 280
+    Left = 736
+    Top = 216
     object Nastavenieid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object Nastavenieip1: TStringField
       FieldName = 'ip1'
@@ -331,17 +336,17 @@
     end
   end
   object Zamest: TFDTable
-    Active = True
     IndexFieldNames = 'id;Priezvisko'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'zmest'
     TableName = 'zmest'
-    Left = 880
-    Top = 328
+    Left = 712
+    Top = 280
     object Zamestid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object ZamestPriezvisko: TStringField
       FieldName = 'Priezvisko'
@@ -399,15 +404,14 @@
     Top = 56
   end
   object caslog: TFDTable
-    Active = True
     IndexFieldNames = 'id;deviceid;userid'
     Connection = FDConnection1
     Transaction = FDTransaction1
     FetchOptions.AssignedValues = [evUnidirectional]
     UpdateOptions.UpdateTableName = 'CAS'
     TableName = 'CAS'
-    Left = 880
-    Top = 376
+    Left = 776
+    Top = 280
     object caslogid: TFDAutoIncField
       DisplayWidth = 10
       FieldName = 'id'
@@ -468,14 +472,13 @@
     Top = 96
   end
   object cislokarty: TFDTable
-    Active = True
     IndexFieldNames = 'ID'
     Connection = FDConnection1
     Transaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'karty'
     TableName = 'karty'
-    Left = 880
-    Top = 136
+    Left = 664
+    Top = 128
     object cislokartyID: TFDAutoIncField
       DisplayWidth = 24
       FieldName = 'ID'
@@ -493,5 +496,89 @@
       FieldName = 'used'
       Origin = 'used'
     end
+  end
+  object dbjottment: TDataSource
+    DataSet = jottment
+    Left = 808
+    Top = 80
+  end
+  object dbdovod: TDataSource
+    DataSet = dovod
+    Left = 808
+    Top = 152
+  end
+  object dovod: TFDTable
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'dovod'
+    TableName = 'dovod'
+    Left = 744
+    Top = 152
+    object dovodid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dovodkod: TIntegerField
+      FieldName = 'kod'
+      Origin = 'kod'
+    end
+    object dovodnazov: TStringField
+      FieldName = 'nazov'
+      Origin = 'nazov'
+      Size = 32767
+    end
+    object dovodplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+  end
+  object jottment: TFDTable
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'jottment'
+    TableName = 'jottment'
+    Left = 736
+    Top = 80
+    object jottmentid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object jottmentzamid: TIntegerField
+      FieldName = 'zamid'
+      Origin = 'zamid'
+    end
+    object jottmentprichod: TDateTimeField
+      FieldName = 'prichod'
+      Origin = 'prichod'
+    end
+    object jottmentodchod: TDateTimeField
+      FieldName = 'odchod'
+      Origin = 'odchod'
+    end
+    object jottmentplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+    object jottmentdovod: TStringField
+      FieldName = 'dovod'
+      Origin = 'dovod'
+      Size = 32767
+    end
+    object jottmentcascelkom: TTimeField
+      FieldName = 'cascelkom'
+      Origin = 'cascelkom'
+    end
+  end
+  object RzRegIniFile1: TRzRegIniFile
+    Path = 'doch.ini'
+    RegAccess = [keyRead, keyWrite, keyAllAccess]
+    Left = 64
+    Top = 432
   end
 end

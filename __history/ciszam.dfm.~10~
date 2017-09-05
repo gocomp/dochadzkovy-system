@@ -333,10 +333,4 @@ object ciszamest: Tciszamest
       TabOrder = 13
     end
   end
-  object RzFormState1: TRzFormState
-    Section = 'zamest'
-    RegIniFile = CMForm.RzRegIniFile1
-    Left = 616
-    Top = 349
-  end
 end

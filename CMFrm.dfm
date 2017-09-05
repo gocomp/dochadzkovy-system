@@ -131,19 +131,19 @@
       item
         Expanded = False
         FieldName = 'prichod'
-        Width = 85
+        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'odchod'
-        Width = 80
+        Width = 179
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'platene'
-        Width = 52
+        Width = 145
         Visible = True
       end
       item
@@ -209,13 +209,13 @@
       item
         Expanded = False
         FieldName = 'Priezvisko'
-        Width = 107
+        Width = 102
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Meno'
-        Width = 107
+        Width = 95
         Visible = True
       end>
   end
@@ -232,7 +232,6 @@
       'DateTimeFormat=DateTime'
       'DriverID=SQLite')
     FetchOptions.AssignedValues = [evUnidirectional]
-    Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
     Left = 880
@@ -244,15 +243,14 @@
     Top = 232
   end
   object Nastavenie: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
     UpdateTransaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'Nastavenie'
     TableName = 'Nastavenie'
-    Left = 880
-    Top = 280
+    Left = 736
+    Top = 216
     object Nastavenieid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
@@ -338,13 +336,12 @@
     end
   end
   object Zamest: TFDTable
-    Active = True
     IndexFieldNames = 'id;Priezvisko'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'zmest'
     TableName = 'zmest'
-    Left = 880
-    Top = 328
+    Left = 712
+    Top = 280
     object Zamestid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
@@ -407,15 +404,14 @@
     Top = 56
   end
   object caslog: TFDTable
-    Active = True
     IndexFieldNames = 'id;deviceid;userid'
     Connection = FDConnection1
     Transaction = FDTransaction1
     FetchOptions.AssignedValues = [evUnidirectional]
     UpdateOptions.UpdateTableName = 'CAS'
     TableName = 'CAS'
-    Left = 880
-    Top = 376
+    Left = 776
+    Top = 280
     object caslogid: TFDAutoIncField
       DisplayWidth = 10
       FieldName = 'id'
@@ -476,14 +472,13 @@
     Top = 96
   end
   object cislokarty: TFDTable
-    Active = True
     IndexFieldNames = 'ID'
     Connection = FDConnection1
     Transaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'karty'
     TableName = 'karty'
-    Left = 880
-    Top = 136
+    Left = 664
+    Top = 128
     object cislokartyID: TFDAutoIncField
       DisplayWidth = 24
       FieldName = 'ID'
@@ -541,7 +536,6 @@
     end
   end
   object jottment: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
@@ -580,5 +574,18 @@
       FieldName = 'cascelkom'
       Origin = 'cascelkom'
     end
+  end
+  object RzRegIniFile1: TRzRegIniFile
+    Path = 'doch.ini'
+    RegAccess = [keyRead, keyWrite, keyAllAccess]
+    Left = 64
+    Top = 432
+  end
+  object fbtemp: TFDQuery
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateTransaction = FDTransaction1
+    Left = 544
+    Top = 120
   end
 end

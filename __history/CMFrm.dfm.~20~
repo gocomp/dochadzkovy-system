@@ -15,6 +15,7 @@
   OldCreateOrder = False
   Position = poDesktopCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object btnOpen: TButton
@@ -33,6 +34,7 @@
     Height = 90
     Caption = 'Function'
     TabOrder = 1
+    Visible = False
     object btnSysSettings: TButton
       Left = 302
       Top = 17
@@ -119,7 +121,7 @@
     Top = 54
     Width = 628
     Height = 358
-    DataSource = Dcas
+    DataSource = dbjottment
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -129,25 +131,30 @@
     Columns = <
       item
         Expanded = False
-        FieldName = 'userid'
-        Width = 50
+        FieldName = 'prichod'
+        Width = 85
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'datumcas'
+        FieldName = 'odchod'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'deviceid'
-        Width = 45
+        FieldName = 'platene'
+        Width = 52
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'verifymode'
-        Width = 109
+        FieldName = 'dovod'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cascelkom'
         Visible = True
       end>
   end
@@ -213,91 +220,6 @@
         Visible = True
       end>
   end
-  object frxReport1: TfrxReport
-    Version = '5.3.14'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42967.942184293980000000
-    ReportOptions.LastChange = 42967.942184293980000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    Left = 32
-    Top = 464
-    Datasets = <>
-    Variables = <>
-    Style = <>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
-      PaperSize = 9
-      LeftMargin = 10.000000000000000000
-      RightMargin = 10.000000000000000000
-      TopMargin = 10.000000000000000000
-      BottomMargin = 10.000000000000000000
-    end
-  end
-  object frxDBDataset1: TfrxDBDataset
-    Description = 'Nastavenie'
-    UserName = 'frxDBDataset1'
-    CloseDataSource = False
-    DataSet = Nastavenie
-    BCDToCurrency = False
-    Left = 168
-    Top = 464
-  end
-  object frxPDFExport1: TfrxPDFExport
-    UseFileCache = True
-    ShowProgress = True
-    OverwritePrompt = False
-    DataOnly = False
-    PrintOptimized = False
-    Outline = False
-    Background = False
-    HTMLTags = True
-    Quality = 95
-    Transparency = False
-    Author = 'FastReport'
-    Subject = 'FastReport PDF export'
-    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
-    HideToolbar = False
-    HideMenubar = False
-    HideWindowUI = False
-    FitWindow = False
-    CenterWindow = False
-    PrintScaling = False
-    PdfA = False
-    Left = 232
-    Top = 416
-  end
-  object frxDBDataset2: TfrxDBDataset
-    Description = 'Zamestnanci'
-    UserName = 'frxDBDataset2'
-    CloseDataSource = False
-    DataSet = Zamest
-    BCDToCurrency = False
-    Left = 224
-    Top = 472
-  end
-  object frxDBDataset3: TfrxDBDataset
-    Description = 'CAS'
-    UserName = 'frxDBDataset3'
-    CloseDataSource = False
-    DataSet = caslog
-    BCDToCurrency = False
-    Left = 96
-    Top = 464
-  end
   object dnastavenie: TDataSource
     DataSet = Nastavenie
     Left = 880
@@ -336,6 +258,7 @@
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object Nastavenieip1: TStringField
       FieldName = 'ip1'
@@ -579,5 +502,90 @@
       FieldName = 'used'
       Origin = 'used'
     end
+  end
+  object dbjottment: TDataSource
+    DataSet = jottment
+    Left = 808
+    Top = 80
+  end
+  object dbdovod: TDataSource
+    DataSet = dovod
+    Left = 808
+    Top = 152
+  end
+  object dovod: TFDTable
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'dovod'
+    TableName = 'dovod'
+    Left = 744
+    Top = 152
+    object dovodid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object dovodkod: TIntegerField
+      FieldName = 'kod'
+      Origin = 'kod'
+    end
+    object dovodnazov: TStringField
+      FieldName = 'nazov'
+      Origin = 'nazov'
+      Size = 32767
+    end
+    object dovodplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+  end
+  object jottment: TFDTable
+    Active = True
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'jottment'
+    TableName = 'jottment'
+    Left = 736
+    Top = 80
+    object jottmentid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object jottmentzamid: TIntegerField
+      FieldName = 'zamid'
+      Origin = 'zamid'
+    end
+    object jottmentprichod: TDateTimeField
+      FieldName = 'prichod'
+      Origin = 'prichod'
+    end
+    object jottmentodchod: TDateTimeField
+      FieldName = 'odchod'
+      Origin = 'odchod'
+    end
+    object jottmentplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+    object jottmentdovod: TStringField
+      FieldName = 'dovod'
+      Origin = 'dovod'
+      Size = 32767
+    end
+    object jottmentcascelkom: TTimeField
+      FieldName = 'cascelkom'
+      Origin = 'cascelkom'
+    end
+  end
+  object RzRegIniFile1: TRzRegIniFile
+    Path = 'doch.ini'
+    RegAccess = [keyRead, keyWrite, keyAllAccess]
+    Left = 64
+    Top = 432
   end
 end

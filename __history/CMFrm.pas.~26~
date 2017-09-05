@@ -103,7 +103,6 @@ type
     dovodnazov: TStringField;
     dovodplatene: TBooleanField;
     RzRegIniFile1: TRzRegIniFile;
-    fbtemp: TFDQuery;
     procedure btnSysSettingsClick(Sender: TObject);
     procedure btnAlarmSettingsClick(Sender: TObject);
     procedure btnMessageSettingsClick(Sender: TObject);
@@ -227,12 +226,7 @@ webupdate:=RzRegIniFile1.readString('WEB','adress','http://www.gocomp.sk/doch.ex
 dbfile:=RzRegIniFile1.ReadString('DB','dbfile','dochlit');
 FDConnection1.Params.Database:=dbfile;
 FDConnection1.Connected:=true;
-jottment.Active:=true;
-Zamest.Active:=true;
-Nastavenie.Active:=true;
-caslog.Active:=true;
-dovod.Active:=true;
-cislokarty.Active:=true;
+
 //  SetButtonStatus(False);
 
 end;

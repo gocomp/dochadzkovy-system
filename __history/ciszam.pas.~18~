@@ -44,6 +44,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure RzButton6Click(Sender: TObject);
+    function odoslat(id:integer):boolean;
   private
     { Private declarations }
   public
@@ -58,7 +59,7 @@ implementation
 uses CMFrm, CommonUnt, EnrollFrm;
 {$R *.dfm}
 
-procedure Tciszamest.Button1Click(Sender: TObject);
+function Tciszamest.odoslat(id:integer):boolean;
 var
   extraData: PSafeArray;
   extraProperty: PSafeArray;
@@ -66,11 +67,11 @@ var
   user: IUserExt;
   i: integer;
    enrolls0: array of IEnrollExt;
+
 begin
   // Set user name
-  for i := 1 to 1 do
-   begin
-    CMForm.opendev(i);
+
+    CMForm.opendev(id);
 
        extraProperty := CreateSafeArray(2);
   extraData := CreateSafeArray(6);
@@ -90,32 +91,41 @@ begin
     CMForm.cislokarty.Filtered:=false;
 
   SafeArrayUnaccessData(user.enrolls);
-
+  result:=false;
   bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserEnroll,
     extraProperty, user, extraData);
   if bRet then
   begin
-    ShowMessage('set card: Success');
-  end
-  else
-  begin
-    ShowMessage('set card: Fail');
-  end;
-
     bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserName,
       extraProperty, user, extraData);
     if bRet then
     begin
-      ShowMessage('Odoslane');
-    end
-    else
-    begin
-      ShowMessage('set user name: Fail');
+      result:=true;
     end;
-
-
-    CMForm.closedev;
   end;
+      CMForm.closedev;
+
+
+end;
+
+procedure Tciszamest.Button1Click(Sender: TObject);
+var bRet:boolean;
+i:integer;
+begin
+
+  for i := 1 to 3 do
+   begin
+      bRet:=odoslat(i);
+      if not bRet then
+          exit;
+   end;
+
+   if bRet then
+         ShowMessage('Odoslane')
+     else
+         ShowMessage('Neodoslane skuste znova!')
+
+
 end;
 
 procedure Tciszamest.Button2Click(Sender: TObject);
@@ -173,6 +183,10 @@ end;
 procedure Tciszamest.RzButton5Click(Sender: TObject);
 begin
   CMForm.Zamest.post;
+
+CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 1  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
+CMForm.fbtemp.ExecSQL;
+
 
   RzPanel1.Visible := false;
 

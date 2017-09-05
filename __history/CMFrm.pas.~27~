@@ -103,7 +103,6 @@ type
     dovodnazov: TStringField;
     dovodplatene: TBooleanField;
     RzRegIniFile1: TRzRegIniFile;
-    fbtemp: TFDQuery;
     procedure btnSysSettingsClick(Sender: TObject);
     procedure btnAlarmSettingsClick(Sender: TObject);
     procedure btnMessageSettingsClick(Sender: TObject);

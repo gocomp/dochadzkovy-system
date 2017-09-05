@@ -54,12 +54,34 @@ object ciszamest: Tciszamest
         end
         item
           Expanded = False
+          FieldName = 'Karta'
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'sadzbahod'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'praccas'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'heslo'
+          Width = 30
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'privileg'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'enabled'
           Visible = True
         end>
     end
@@ -332,11 +354,5 @@ object ciszamest: Tciszamest
       ListSource = CMForm.Dcislokarty
       TabOrder = 13
     end
-  end
-  object RzFormState1: TRzFormState
-    Section = 'zamest'
-    RegIniFile = CMForm.RzRegIniFile1
-    Left = 616
-    Top = 349
   end
 end

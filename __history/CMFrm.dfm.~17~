@@ -33,6 +33,7 @@
     Height = 90
     Caption = 'Function'
     TabOrder = 1
+    Visible = False
     object btnSysSettings: TButton
       Left = 302
       Top = 17
@@ -119,7 +120,7 @@
     Top = 54
     Width = 628
     Height = 358
-    DataSource = Dcas
+    DataSource = dbjottment
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -129,25 +130,30 @@
     Columns = <
       item
         Expanded = False
-        FieldName = 'userid'
-        Width = 50
+        FieldName = 'prichod'
+        Width = 85
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'datumcas'
+        FieldName = 'odchod'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'deviceid'
-        Width = 45
+        FieldName = 'platene'
+        Width = 52
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'verifymode'
-        Width = 109
+        FieldName = 'dovod'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cascelkom'
         Visible = True
       end>
   end
@@ -512,12 +518,13 @@
     Transaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'dovod'
     TableName = 'dovod'
-    Left = 776
-    Top = 224
+    Left = 744
+    Top = 152
     object dovodid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object dovodkod: TIntegerField
       FieldName = 'kod'
@@ -540,12 +547,13 @@
     Transaction = FDTransaction1
     UpdateOptions.UpdateTableName = 'jottment'
     TableName = 'jottment'
-    Left = 728
-    Top = 144
+    Left = 736
+    Top = 80
     object jottmentid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object jottmentzamid: TIntegerField
       FieldName = 'zamid'

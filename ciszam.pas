@@ -9,7 +9,7 @@ uses
   Activex,
   RzDBEdit, RzPanel, RzButton, Vcl.Grids, Riss_Devices_TLB, Vcl.DBGrids,
   RzDBGrid, Vcl.ExtCtrls,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, RzForms;
 
 type
   Tciszamest = class(TForm)
@@ -36,6 +36,7 @@ type
     Button1: TButton;
     Button2: TButton;
     RzButton6: TRzButton;
+    RzFormState1: TRzFormState;
     procedure RzButton1Click(Sender: TObject);
     procedure RzButton3Click(Sender: TObject);
     procedure RzButton2Click(Sender: TObject);
@@ -110,12 +111,13 @@ end;
 
 procedure Tciszamest.Button1Click(Sender: TObject);
 var bRet:boolean;
+i:integer;
 begin
 
   for i := 1 to 3 do
    begin
       bRet:=odoslat(i);
-      if !bRet then
+      if not bRet then
           exit;
    end;
 
@@ -151,23 +153,17 @@ var
 begin
   // Show a confirmation dialog
   buttonSelected :=
-    messagedlg('RFID ' + inttostr(CMForm.cislokartycislokarty.Value) + '.' +
-    chr(10) + chr(13) + ' Naozaj chcete vymazaù?', mtError, mbOKCancel, 0);
+    messagedlg(' ' + CMForm.ZamestPriezvisko.Value+' '+CMForm.ZamestMeno.Value+ '.' +
+    chr(10) + chr(13) + ' Naozaj chcete vymazaù?', mtConfirmation, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-    if not CMForm.cislokartyused.Value then
-    begin
+      CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 0  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
+      CMForm.fbtemp.ExecSQL;
       CMForm.cislokarty.Delete;
       ShowMessage('VymazanÈ');
-    end
-    else
-    begin
-      ShowMessage('RFID sa pouûÌv·!!! NevymazanÈ');
-    end
-
-  end;
+    end;
 
 end;
 
@@ -182,6 +178,9 @@ end;
 procedure Tciszamest.RzButton5Click(Sender: TObject);
 begin
   CMForm.Zamest.post;
+
+CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 1  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
+CMForm.fbtemp.ExecSQL;
 
   RzPanel1.Visible := false;
 
