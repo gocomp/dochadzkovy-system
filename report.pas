@@ -12,8 +12,6 @@ type
   TForm2 = class(TForm)
     frxrfid: TfrxDBDataset;
     frxzamest: TfrxDBDataset;
-    frxChartObject1: TfrxChartObject;
-    frxPDFExport1: TfrxPDFExport;
     frxReport1: TfrxReport;
     frxRichObject1: TfrxRichObject;
     frxGradientObject1: TfrxGradientObject;

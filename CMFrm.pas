@@ -46,8 +46,6 @@ type
     caslogenroll: TIntegerField;
     caslogtext: TStringField;
     caslogdeviceid: TIntegerField;
-    caslogverifymode: TIntegerField;
-    caslogaction: TIntegerField;
     Dcislokarty: TDataSource;
     cislokarty: TFDTable;
     cislokartyID: TFDAutoIncField;
@@ -104,6 +102,8 @@ type
     dovodplatene: TBooleanField;
     RzRegIniFile1: TRzRegIniFile;
     fbtemp: TFDQuery;
+    caslogdovod: TIntegerField;
+    caslogvstupc: TIntegerField;
     procedure btnSysSettingsClick(Sender: TObject);
     procedure btnAlarmSettingsClick(Sender: TObject);
     procedure btnMessageSettingsClick(Sender: TObject);
@@ -125,6 +125,8 @@ type
     procedure RzButton4Click(Sender: TObject);
     procedure opendev(id: integer);
     procedure closedev();
+    procedure DBGrid2ColEnter(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
     procedure SetDeviceInfo(ADevice: IDevice; DN: integer; IpAdress: string;
@@ -140,8 +142,7 @@ var
   gIDevice: IDevice;
   gDeviceConnection: TZd2911DeviceConnection;
   gDeviceTools: TZd2911Tools;
-  devnum:integer;
-
+  devnum: integer;
 
 implementation
 
@@ -155,9 +156,9 @@ procedure TCMForm.AddRecord(AIRecord: IRecordExt);
 // lItem: TListItem;
 begin
   caslog.Insert;
-  caslogverifymode.Value := AIRecord.Verify;
+  caslogdovod.Value := AIRecord.Verify;
   // mivel jott carta jelszo  GetGLogVerify(
-  caslogaction.Value := AIRecord.Action; // jottment
+  caslogvstupc.Value := AIRecord.Action; // jottment
   caslogdatumcas.Value := AIRecord.Clock;
   caslogdeviceid.Value := AIRecord.DN; // device id
   casloguserid.Value := strtoint(AIRecord.DIN); // user id
@@ -178,6 +179,53 @@ procedure TCMForm.btnSysSettingsClick(Sender: TObject);
 begin
 
   ShowSystemFrm;
+end;
+
+procedure TCMForm.Button3Click(Sender: TObject);
+var
+  i, ii,den: integer;
+  prichod, odchod: tdatetime;
+  cascelkom: ttime;
+  platene, zapis: Boolean;
+  dovod, sql: string;
+begin
+
+  zapis := false;
+  Zamest.First;
+  while not Zamest.eof do
+  begin
+    caslog.Filtered := false;
+    caslog.Filter := 'userid=' + inttostr(Zamestid.Value);
+    caslog.Filtered := true;
+    caslog.First;
+     den:=1;
+    while not caslog.eof do
+    begin
+
+
+      if den=2 then
+      begin
+      zapis:=true; den:=1;
+      end;
+
+      if zapis then
+      begin
+        sql := 'INSERT INTO jottment (prichod,odchod,dovod,platene,cascelkom) VALUES ('
+          + datetimetostr(prichod) + ',' + datetimetostr(odchod) + ',' + dovod + ',' + platene + ',' +
+          cascelkom + ');';
+
+        jottment.sql.Add(sql);
+        // jottment.ExecSQL;
+        zapis := false;
+      end;
+      den++;
+      caslog.Next;
+
+    end;
+    Zamest.Next;
+  end;
+  jottment.Active := true;
+  jottment.Refresh;
 end;
 
 procedure TCMForm.caslogdatumcasGetText(Sender: TField; var Text: string;
@@ -219,21 +267,22 @@ end;
 
 procedure TCMForm.FormCreate(Sender: TObject);
 var
-webupdate,dbfile:string;
+  webupdate, dbfile: string;
 begin
   inherited;
-devnum:=RzRegIniFile1.readInteger('DEV','number',1);
-webupdate:=RzRegIniFile1.readString('WEB','adress','http://www.gocomp.sk/doch.exe');
-dbfile:=RzRegIniFile1.ReadString('DB','dbfile','dochlit');
-FDConnection1.Params.Database:=dbfile;
-FDConnection1.Connected:=true;
-jottment.Active:=true;
-Zamest.Active:=true;
-Nastavenie.Active:=true;
-caslog.Active:=true;
-dovod.Active:=true;
-cislokarty.Active:=true;
-//  SetButtonStatus(False);
+  devnum := RzRegIniFile1.readInteger('DEV', 'number', 1);
+  webupdate := RzRegIniFile1.readString('WEB', 'adress',
+    'http://www.gocomp.sk/doch.exe');
+  dbfile := RzRegIniFile1.readString('DB', 'dbfile', 'dochlit');
+  FDConnection1.Params.Database := dbfile;
+  FDConnection1.Connected := true;
+  jottment.Active := true;
+  Zamest.Active := true;
+  Nastavenie.Active := true;
+  caslog.Active := true;
+  dovod.Active := true;
+  cislokarty.Active := true;
+  // SetButtonStatus(False);
 
 end;
 
@@ -300,6 +349,13 @@ begin
     gDeviceConnection.close;
 end;
 
+procedure TCMForm.DBGrid2ColEnter(Sender: TObject);
+begin
+  jottment.Filtered := false;
+  jottment.Filter := 'id=' + inttostr(Zamestid.Value);
+  jottment.Filtered := true;
+end;
+
 procedure TCMForm.olvas(id: integer);
 var
   deviceStatus: PSafeArray;
@@ -318,15 +374,14 @@ begin
 
   opendev(id);
 
-
   begin
 
-    SetButtonStatus(True);
+    SetButtonStatus(true);
 
     begin
       extraProperty := CreateSafeArray(2);
       extraData := CreateSafeArray(6);
-      deviceStatus := gDeviceTools.GetBytesByNum(IntToStr(DeviceBusy),
+      deviceStatus := gDeviceTools.GetBytesByNum(inttostr(DeviceBusy),
         NumberType_Int32Bit);
 
       // Setting device communication status to busy
@@ -381,7 +436,7 @@ begin
         end;
 
         // Setting device communication status to idle
-        deviceStatus := gDeviceTools.GetBytesByNum(IntToStr(DeviceIdle),
+        deviceStatus := gDeviceTools.GetBytesByNum(inttostr(DeviceIdle),
           NumberType_Int32Bit);
         bRet := gDeviceConnection.SetPropertyExt_2(DeviceProperty_Enable,
           extraProperty, gIDevice, deviceStatus);

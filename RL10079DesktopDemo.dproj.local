@@ -2,17 +2,17 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2017/08/23 22:53:37.000.517,=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit1.pas</Transaction>
-    <Transaction>2017/08/23 22:57:16.000.970,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit1.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\cislokariet.dfm</Transaction>
-    <Transaction>2017/08/23 22:57:16.000.970,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit1.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\cislokariet.pas</Transaction>
+    <Transaction>2017/08/23 22:57:16.000.970,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\cislokariet.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit1.dfm</Transaction>
+    <Transaction>2017/08/23 22:57:16.000.970,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\cislokariet.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit1.pas</Transaction>
     <Transaction>2017/08/24 00:13:52.000.790,=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas</Transaction>
-    <Transaction>2017/08/24 00:16:53.000.325,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\ciszam.dfm</Transaction>
-    <Transaction>2017/08/24 00:16:53.000.325,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\ciszam.pas</Transaction>
+    <Transaction>2017/08/24 00:16:53.000.325,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\ciszam.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.dfm</Transaction>
+    <Transaction>2017/08/24 00:16:53.000.325,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\ciszam.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas</Transaction>
     <Transaction>2017/08/24 00:52:32.000.265,=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas</Transaction>
-    <Transaction>2017/08/24 00:54:22.000.551,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\nastavenie.dfm</Transaction>
-    <Transaction>2017/08/24 00:54:22.000.551,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\nastavenie.pas</Transaction>
+    <Transaction>2017/08/24 00:54:22.000.551,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\nastavenie.dfm=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.dfm</Transaction>
+    <Transaction>2017/08/24 00:54:22.000.551,C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\nastavenie.pas=C:\Users\gjoe\Desktop\RIMS\RL10079DesktopDemo_Attendance_AccessControl_Delphi\Implementation\Unit2.pas</Transaction>
     <Transaction>2017/08/29 19:02:28.000.209,=C:\github\dochadzkovy-system\Unit1.pas</Transaction>
     <Transaction>2017/09/03 02:05:18.000.619,=C:\github\dochadzkovy-system\Unit2.pas</Transaction>
-    <Transaction>2017/09/03 02:06:31.000.244,C:\github\dochadzkovy-system\report.dfm=C:\github\dochadzkovy-system\Unit2.dfm</Transaction>
-    <Transaction>2017/09/03 02:06:31.000.244,C:\github\dochadzkovy-system\report.pas=C:\github\dochadzkovy-system\Unit2.pas</Transaction>
+    <Transaction>2017/09/03 02:06:31.000.244,C:\github\dochadzkovy-system\Unit2.pas=C:\github\dochadzkovy-system\report.pas</Transaction>
+    <Transaction>2017/09/03 02:06:31.000.244,C:\github\dochadzkovy-system\Unit2.dfm=C:\github\dochadzkovy-system\report.dfm</Transaction>
   </Transactions>
 </BorlandProject>
