@@ -26,39 +26,11 @@ object Form2: TForm2
     UserName = 'frxDBDataset2'
     CloseDataSource = False
     BCDToCurrency = False
-    Left = 424
-    Top = 142
-  end
-  object frxChartObject1: TfrxChartObject
-    Left = 464
-    Top = 142
-  end
-  object frxPDFExport1: TfrxPDFExport
-    UseFileCache = True
-    ShowProgress = True
-    OverwritePrompt = False
-    DataOnly = False
-    PrintOptimized = False
-    Outline = False
-    Background = False
-    HTMLTags = True
-    Quality = 95
-    Transparency = False
-    Author = 'FastReport'
-    Subject = 'FastReport PDF export'
-    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
-    HideToolbar = False
-    HideMenubar = False
-    HideWindowUI = False
-    FitWindow = False
-    CenterWindow = False
-    PrintScaling = False
-    PdfA = False
-    Left = 400
-    Top = 142
+    Left = 472
+    Top = 158
   end
   object frxReport1: TfrxReport
-    Version = '5.3.14'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -272,27 +244,27 @@ object Form2: TForm2
   end
   object frxUserDataSet1: TfrxUserDataSet
     UserName = 'frxUserDataSet1'
-    Left = 256
-    Top = 142
+    Left = 232
+    Top = 238
   end
   object frxOLEObject1: TfrxOLEObject
-    Left = 296
-    Top = 142
+    Left = 336
+    Top = 238
   end
   object frxcas: TfrxDBDataset
     Description = 'CAS'
     UserName = 'frxDBDataset3'
     CloseDataSource = False
     BCDToCurrency = False
-    Left = 280
-    Top = 142
+    Left = 168
+    Top = 174
   end
   object frxnastavenie: TfrxDBDataset
     Description = 'Nastavenie'
     UserName = 'frxDBDataset1'
     CloseDataSource = False
     BCDToCurrency = False
-    Left = 352
-    Top = 142
+    Left = 464
+    Top = 254
   end
 end

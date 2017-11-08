@@ -45,7 +45,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure RzButton6Click(Sender: TObject);
-    function odoslat(id:integer):boolean;
+    function odoslat(id: integer): boolean;
   private
     { Private declarations }
   public
@@ -60,39 +60,39 @@ implementation
 uses CMFrm, CommonUnt, EnrollFrm;
 {$R *.dfm}
 
-function Tciszamest.odoslat(id:integer):boolean;
+function Tciszamest.odoslat(id: integer): boolean;
 var
   extraData: PSafeArray;
   extraProperty: PSafeArray;
-  bRet: Boolean;
+  bRet: boolean;
   user: IUserExt;
   i: integer;
-   enrolls0: array of IEnrollExt;
+  enrolls0: array of IEnrollExt;
 
 begin
   // Set user name
 
-    CMForm.opendev(id);
+  CMForm.opendev(id);
 
-       extraProperty := CreateSafeArray(2);
+  extraProperty := CreateSafeArray(2);
   extraData := CreateSafeArray(6);
   extraProperty := gDeviceTools.GetBytesByNum
     (IntToStr(UserEnrollCommand_WriteCard), NumberType_Int32Bit);
   user := CoUserExt.Create;
 
- user.DIN := Trim(inttostr(CMForm.ZamestKarta.Value));
- user.UserName := Trim(CMForm.ZamestPriezvisko.Value + ' ' +
-      CMForm.ZamestMeno.Value);
+  user.DIN := Trim(IntToStr(CMForm.ZamestKarta.Value));
+  user.UserName := Trim(CMForm.ZamestPriezvisko.Value + ' ' +
+    CMForm.ZamestMeno.Value);
   SafeArrayAccessData(user.enrolls, Pointer(enrolls0));
   // SetLength(enrolls0,1);
   enrolls0[0].DIN := user.DIN;
-  CMForm.cislokarty.Filter:='ID='+inttostr(CMForm.ZamestKarta.Value);
-  CMForm.cislokarty.Filtered:=true;
-  enrolls0[0].CardID := Trim(inttostr(CMForm.cislokartycislokarty.Value));
-    CMForm.cislokarty.Filtered:=false;
+  CMForm.cislokarty.Filter := 'ID=' + IntToStr(CMForm.ZamestKarta.Value);
+  CMForm.cislokarty.Filtered := true;
+  enrolls0[0].CardID := Trim(IntToStr(CMForm.cislokartycislokarty.Value));
+  CMForm.cislokarty.Filtered := false;
 
   SafeArrayUnaccessData(user.enrolls);
-  result:=false;
+  result := false;
   bRet := gDeviceConnection.SetPropertyExt(UserProperty_UserEnroll,
     extraProperty, user, extraData);
   if bRet then
@@ -101,37 +101,36 @@ begin
       extraProperty, user, extraData);
     if bRet then
     begin
-      result:=true;
+      result := true;
     end;
   end;
-      CMForm.closedev;
-
+  CMForm.closedev;
 
 end;
 
 procedure Tciszamest.Button1Click(Sender: TObject);
-var bRet:boolean;
-i:integer;
+var
+  bRet: boolean;
+  i: integer;
 begin
 
   for i := 1 to 3 do
-   begin
-      bRet:=odoslat(i);
-      if not bRet then
-          exit;
-   end;
+  begin
+    bRet := odoslat(i);
+    if not bRet then
+      exit;
+  end;
 
-   if bRet then
-         ShowMessage('Odoslane')
-     else
-         ShowMessage('Neodoslane skuste znova!')
-
+  if bRet then
+    ShowMessage('Odoslane')
+  else
+    ShowMessage('Neodoslane skuste znova!')
 
 end;
 
 procedure Tciszamest.Button2Click(Sender: TObject);
 begin
-ShowEnrollFrm;
+  ShowEnrollFrm;
 end;
 
 procedure Tciszamest.RzButton1Click(Sender: TObject);
@@ -152,18 +151,19 @@ var
   buttonSelected: integer;
 begin
   // Show a confirmation dialog
-  buttonSelected :=
-    messagedlg(' ' + CMForm.ZamestPriezvisko.Value+' '+CMForm.ZamestMeno.Value+ '.' +
-    chr(10) + chr(13) + ' Naozaj chcete vymazaù?', mtConfirmation, mbOKCancel, 0);
+  buttonSelected := messagedlg(' ' + CMForm.ZamestPriezvisko.Value + ' ' +
+    CMForm.ZamestMeno.Value + '.' + chr(10) + chr(13) +
+    ' Naozaj chcete vymazaù?', mtConfirmation, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-      CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 0  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
-      CMForm.fbtemp.ExecSQL;
-      CMForm.cislokarty.Delete;
-      ShowMessage('VymazanÈ');
-    end;
+    CMForm.fbtemp.SQL.CommaText := 'UPDATE karty SET used = 0  WHERE ID = ' +
+      IntToStr(CMForm.ZamestKarta.Value) + ';';
+    CMForm.fbtemp.ExecSQL;
+    CMForm.cislokarty.Delete;
+    ShowMessage('VymazanÈ');
+  end;
 
 end;
 
@@ -179,8 +179,9 @@ procedure Tciszamest.RzButton5Click(Sender: TObject);
 begin
   CMForm.Zamest.post;
 
-CMForm.fbtemp.SQL.CommaText :='UPDATE karty SET used = 1  WHERE ID = '+ inttostr(CMForm.ZamestKarta.Value)+';';
-CMForm.fbtemp.ExecSQL;
+  CMForm.fbtemp.SQL.CommaText := 'UPDATE karty SET used = 1  WHERE ID = ' +
+    IntToStr(CMForm.ZamestKarta.Value) + ';';
+  CMForm.fbtemp.ExecSQL;
 
   RzPanel1.Visible := false;
 

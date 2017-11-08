@@ -284,7 +284,7 @@ var
   bRet: Boolean;
   user: IUserExt;
 begin
-CMForm.opendev(1);
+  CMForm.opendev(1);
   // get user name
   extraProperty := CreateSafeArray(2);
   extraData := CreateSafeArray(6);
@@ -311,7 +311,7 @@ var
   bRet: Boolean;
   user: IUserExt;
 begin
-CMForm.opendev(1);
+  CMForm.opendev(1);
   // Set user name
   extraProperty := CreateSafeArray(2);
   extraData := CreateSafeArray(6);
