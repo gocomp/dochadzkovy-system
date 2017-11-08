@@ -21,26 +21,12 @@ object IWForm1: TIWForm1
     Top = 24
     Width = 75
     Height = 25
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
-    StyleRenderOptions.RenderSize = True
-    StyleRenderOptions.RenderPosition = True
-    StyleRenderOptions.RenderFont = True
-    StyleRenderOptions.RenderZIndex = True
-    StyleRenderOptions.RenderVisibility = True
-    StyleRenderOptions.RenderStatus = True
-    StyleRenderOptions.RenderAbsolute = True
     Caption = 'IWButton1'
-    DoSubmitValidation = True
     Color = clBtnFace
     Font.Color = clNone
     Font.Size = 10
     Font.Style = []
     FriendlyName = 'IWButton1'
-    ScriptEvents = <>
     TabOrder = 0
   end
   object IWButton2: TIWButton
@@ -48,26 +34,12 @@ object IWForm1: TIWForm1
     Top = 24
     Width = 75
     Height = 25
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
-    StyleRenderOptions.RenderSize = True
-    StyleRenderOptions.RenderPosition = True
-    StyleRenderOptions.RenderFont = True
-    StyleRenderOptions.RenderZIndex = True
-    StyleRenderOptions.RenderVisibility = True
-    StyleRenderOptions.RenderStatus = True
-    StyleRenderOptions.RenderAbsolute = True
     Caption = 'IWButton2'
-    DoSubmitValidation = True
     Color = clBtnFace
     Font.Color = clNone
     Font.Size = 10
     Font.Style = []
     FriendlyName = 'IWButton2'
-    ScriptEvents = <>
     TabOrder = 1
   end
   object IWLayoutMgrHTML1: TIWLayoutMgrHTML

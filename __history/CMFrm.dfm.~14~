@@ -1,0 +1,582 @@
+﻿object CMForm: TCMForm
+  Left = 272
+  Top = 195
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'DochLit'
+  ClientHeight = 516
+  ClientWidth = 917
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnOpen: TButton
+    Left = 8
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = #268#237'ta'#357' '#250'daje'
+    TabOrder = 0
+    OnClick = btnOpenClick
+  end
+  object gb2: TGroupBox
+    Left = 267
+    Top = 418
+    Width = 642
+    Height = 90
+    Caption = 'Function'
+    TabOrder = 1
+    Visible = False
+    object btnSysSettings: TButton
+      Left = 302
+      Top = 17
+      Width = 136
+      Height = 25
+      Caption = 'System Settings'
+      TabOrder = 0
+      OnClick = btnSysSettingsClick
+    end
+    object btnAlarmSettings: TButton
+      Left = 160
+      Top = 21
+      Width = 136
+      Height = 25
+      Caption = 'Alarm Settings'
+      TabOrder = 1
+      OnClick = btnAlarmSettingsClick
+    end
+    object btnMessageSettings: TButton
+      Left = 473
+      Top = 49
+      Width = 136
+      Height = 25
+      Caption = 'Message Settings'
+      TabOrder = 2
+      OnClick = btnMessageSettingsClick
+    end
+    object btnEmp: TButton
+      Left = 160
+      Top = 52
+      Width = 136
+      Height = 25
+      Caption = 'Empployee Management'
+      TabOrder = 3
+      OnClick = btnEmpClick
+    end
+    object btnSLog: TButton
+      Left = 463
+      Top = 18
+      Width = 136
+      Height = 25
+      Caption = 'SLog Management'
+      TabOrder = 4
+      OnClick = btnSLogClick
+    end
+    object btnGLog: TButton
+      Left = 302
+      Top = 48
+      Width = 136
+      Height = 25
+      Caption = 'GLog Management'
+      TabOrder = 5
+      OnClick = btnGLogClick
+    end
+    object btnAccessSet: TButton
+      Left = 18
+      Top = 19
+      Width = 136
+      Height = 25
+      Caption = 'Access Control  Settings'
+      Enabled = False
+      TabOrder = 6
+      OnClick = btnAccessSetClick
+    end
+  end
+  object Button3: TButton
+    Left = 119
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = 'Vygenerova'#357' VP'
+    TabOrder = 2
+  end
+  object Vytlačiť: TButton
+    Left = 230
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = 'Vytla'#269'i'#357' VP'
+    TabOrder = 3
+  end
+  object DBGrid1: TDBGrid
+    Left = 248
+    Top = 54
+    Width = 628
+    Height = 358
+    DataSource = dbjottment
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'prichod'
+        Width = 85
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'odchod'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'platene'
+        Width = 52
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'dovod'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cascelkom'
+        Visible = True
+      end>
+  end
+  object RzButton1: TRzButton
+    Left = 582
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = #268#237'selnik RFID '
+    TabOrder = 5
+    OnClick = RzButton1Click
+  end
+  object RzButton2: TRzButton
+    Left = 804
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = 'Zatvori'#357
+    TabOrder = 6
+    OnClick = RzButton2Click
+  end
+  object RzButton3: TRzButton
+    Left = 471
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = #268#237'selnik Zamestnanca'
+    TabOrder = 7
+    OnClick = RzButton3Click
+  end
+  object RzButton4: TRzButton
+    Left = 693
+    Top = 8
+    Width = 105
+    Height = 40
+    Caption = 'Nastavenie'
+    TabOrder = 8
+    OnClick = RzButton4Click
+  end
+  object DBGrid2: TDBGrid
+    Left = 8
+    Top = 54
+    Width = 234
+    Height = 358
+    DataSource = Dzamest
+    TabOrder = 9
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Priezvisko'
+        Width = 107
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Meno'
+        Width = 107
+        Visible = True
+      end>
+  end
+  object dnastavenie: TDataSource
+    DataSet = Nastavenie
+    Left = 880
+    Top = 424
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'LockingMode=Normal'
+      'Database=C:\github\dochadzkovy-system\dochlit'
+      'StringFormat=ANSI'
+      'DateTimeFormat=DateTime'
+      'DriverID=SQLite')
+    FetchOptions.AssignedValues = [evUnidirectional]
+    Connected = True
+    LoginPrompt = False
+    Transaction = FDTransaction1
+    Left = 880
+    Top = 184
+  end
+  object FDTransaction1: TFDTransaction
+    Connection = FDConnection1
+    Left = 880
+    Top = 232
+  end
+  object Nastavenie: TFDTable
+    Active = True
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateTransaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'Nastavenie'
+    TableName = 'Nastavenie'
+    Left = 880
+    Top = 280
+    object Nastavenieid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object Nastavenieip1: TStringField
+      FieldName = 'ip1'
+      Origin = 'ip1'
+      Size = 32767
+    end
+    object Nastavenieport1: TIntegerField
+      FieldName = 'port1'
+      Origin = 'port1'
+    end
+    object Nastaveniemiesto1: TStringField
+      FieldName = 'miesto1'
+      Origin = 'miesto1'
+      Size = 32767
+    end
+    object Nastavenieip2: TStringField
+      FieldName = 'ip2'
+      Origin = 'ip2'
+      Size = 32767
+    end
+    object Nastavenieport2: TIntegerField
+      FieldName = 'port2'
+      Origin = 'port2'
+    end
+    object Nastaveniemiesto2: TStringField
+      FieldName = 'miesto2'
+      Origin = 'miesto2'
+      Size = 32767
+    end
+    object Nastavenieip3: TStringField
+      FieldName = 'ip3'
+      Origin = 'ip3'
+      Size = 32767
+    end
+    object Nastavenieport3: TIntegerField
+      FieldName = 'port3'
+      Origin = 'port3'
+    end
+    object Nastaveniemiesto3: TStringField
+      FieldName = 'miesto3'
+      Origin = 'miesto3'
+      Size = 32767
+    end
+    object Nastavenieico: TIntegerField
+      FieldName = 'ico'
+      Origin = 'ico'
+    end
+    object Nastaveniedic: TIntegerField
+      FieldName = 'dic'
+      Origin = 'dic'
+    end
+    object Nastavenieicdph: TStringField
+      FieldName = 'icdph'
+      Origin = 'icdph'
+      Size = 32767
+    end
+    object Nastavenienazov: TStringField
+      FieldName = 'nazov'
+      Origin = 'nazov'
+      Size = 32767
+    end
+    object Nastavenieadresa: TStringField
+      FieldName = 'adresa'
+      Origin = 'adresa'
+      Size = 32767
+    end
+    object Nastaveniedev1: TIntegerField
+      FieldName = 'dev1'
+      Origin = 'dev1'
+    end
+    object Nastaveniedev2: TIntegerField
+      FieldName = 'dev2'
+      Origin = 'dev2'
+    end
+    object Nastaveniedev3: TIntegerField
+      FieldName = 'dev3'
+      Origin = 'dev3'
+    end
+  end
+  object Zamest: TFDTable
+    Active = True
+    IndexFieldNames = 'id;Priezvisko'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'zmest'
+    TableName = 'zmest'
+    Left = 880
+    Top = 328
+    object Zamestid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object ZamestPriezvisko: TStringField
+      FieldName = 'Priezvisko'
+      Origin = 'Priezvisko'
+      Size = 32767
+    end
+    object ZamestMeno: TStringField
+      FieldName = 'Meno'
+      Origin = 'Meno'
+      Size = 32767
+    end
+    object ZamestKarta: TIntegerField
+      FieldName = 'Karta'
+      Origin = 'Karta'
+    end
+    object Zamestzamcislo: TIntegerField
+      FieldName = 'zamcislo'
+      Origin = 'zamcislo'
+    end
+    object Zamestsadzbahod: TFloatField
+      FieldName = 'sadzbahod'
+      Origin = 'sadzbahod'
+    end
+    object Zamestpraccas: TFloatField
+      FieldName = 'praccas'
+      Origin = 'praccas'
+    end
+    object Zamestheslo: TStringField
+      FieldName = 'heslo'
+      Origin = 'heslo'
+      Size = 32767
+    end
+    object Zamestprivileg: TStringField
+      FieldName = 'privileg'
+      Origin = 'privileg'
+      Size = 32767
+    end
+    object Zamestenabled: TBooleanField
+      FieldName = 'enabled'
+      Origin = 'enabled'
+    end
+    object Zamestenabdate: TDateField
+      FieldName = 'enabdate'
+      Origin = 'enabdate'
+    end
+  end
+  object Dzamest: TDataSource
+    DataSet = Zamest
+    Left = 888
+    Top = 472
+  end
+  object Dcas: TDataSource
+    DataSet = caslog
+    Left = 880
+    Top = 56
+  end
+  object caslog: TFDTable
+    Active = True
+    IndexFieldNames = 'id;deviceid;userid'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    FetchOptions.AssignedValues = [evUnidirectional]
+    UpdateOptions.UpdateTableName = 'CAS'
+    TableName = 'CAS'
+    Left = 880
+    Top = 376
+    object caslogid: TFDAutoIncField
+      DisplayWidth = 10
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object caslogSN: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SN'
+      Origin = 'SN'
+    end
+    object casloguserid: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'userid'
+      Origin = 'userid'
+    end
+    object caslogadminid: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'adminid'
+      Origin = 'adminid'
+    end
+    object caslogdatumcas: TDateTimeField
+      DisplayWidth = 20
+      FieldName = 'datumcas'
+      Origin = 'datumcas'
+    end
+    object caslogenroll: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'enroll'
+      Origin = 'enroll'
+    end
+    object caslogtext: TStringField
+      DisplayWidth = 32767
+      FieldName = 'text'
+      Origin = 'text'
+      Size = 32767
+    end
+    object caslogdeviceid: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'deviceid'
+      Origin = 'deviceid'
+    end
+    object caslogverifymode: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'verifymode'
+      Origin = 'verifymode'
+    end
+    object caslogaction: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'action'
+      Origin = 'action'
+    end
+  end
+  object Dcislokarty: TDataSource
+    DataSet = cislokarty
+    Left = 880
+    Top = 96
+  end
+  object cislokarty: TFDTable
+    Active = True
+    IndexFieldNames = 'ID'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'karty'
+    TableName = 'karty'
+    Left = 880
+    Top = 136
+    object cislokartyID: TFDAutoIncField
+      DisplayWidth = 24
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object cislokartycislokarty: TIntegerField
+      DisplayWidth = 29
+      FieldName = 'cislokarty'
+      Origin = 'cislokarty'
+    end
+    object cislokartyused: TBooleanField
+      DisplayWidth = 26
+      FieldName = 'used'
+      Origin = 'used'
+    end
+  end
+  object dbjottment: TDataSource
+    DataSet = jottment
+    Left = 808
+    Top = 80
+  end
+  object dbdovod: TDataSource
+    DataSet = dovod
+    Left = 808
+    Top = 152
+  end
+  object dovod: TFDTable
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'dovod'
+    TableName = 'dovod'
+    Left = 744
+    Top = 152
+    object dovodid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object dovodkod: TIntegerField
+      FieldName = 'kod'
+      Origin = 'kod'
+    end
+    object dovodnazov: TStringField
+      FieldName = 'nazov'
+      Origin = 'nazov'
+      Size = 32767
+    end
+    object dovodplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+  end
+  object jottment: TFDTable
+    Active = True
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    UpdateOptions.UpdateTableName = 'jottment'
+    TableName = 'jottment'
+    Left = 736
+    Top = 80
+    object jottmentid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object jottmentzamid: TIntegerField
+      FieldName = 'zamid'
+      Origin = 'zamid'
+    end
+    object jottmentprichod: TDateTimeField
+      FieldName = 'prichod'
+      Origin = 'prichod'
+    end
+    object jottmentodchod: TDateTimeField
+      FieldName = 'odchod'
+      Origin = 'odchod'
+    end
+    object jottmentplatene: TBooleanField
+      FieldName = 'platene'
+      Origin = 'platene'
+    end
+    object jottmentdovod: TStringField
+      FieldName = 'dovod'
+      Origin = 'dovod'
+      Size = 32767
+    end
+    object jottmentcascelkom: TTimeField
+      FieldName = 'cascelkom'
+      Origin = 'cascelkom'
+    end
+  end
+end

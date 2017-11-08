@@ -106,7 +106,6 @@
     Height = 40
     Caption = 'Vygenerova'#357' VP'
     TabOrder = 2
-    OnClick = Button3Click
   end
   object Vytlačiť: TButton
     Left = 230
@@ -119,8 +118,8 @@
   object DBGrid1: TDBGrid
     Left = 248
     Top = 54
-    Width = 661
-    Height = 454
+    Width = 628
+    Height = 358
     DataSource = dbjottment
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
@@ -132,25 +131,24 @@
       item
         Expanded = False
         FieldName = 'prichod'
-        Width = 82
+        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'odchod'
-        Width = 88
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'dovod'
-        Width = 217
+        Width = 179
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'platene'
-        Width = 114
+        Width = 145
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'dovod'
         Visible = True
       end
       item
@@ -199,7 +197,7 @@
     Left = 8
     Top = 54
     Width = 234
-    Height = 454
+    Height = 358
     DataSource = Dzamest
     TabOrder = 9
     TitleFont.Charset = DEFAULT_CHARSET
@@ -207,7 +205,6 @@
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
-    OnColEnter = DBGrid2ColEnter
     Columns = <
       item
         Expanded = False
@@ -235,11 +232,10 @@
       'DateTimeFormat=DateTime'
       'DriverID=SQLite')
     FetchOptions.AssignedValues = [evUnidirectional]
-    Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
-    Left = 856
-    Top = 160
+    Left = 880
+    Top = 184
   end
   object FDTransaction1: TFDTransaction
     Connection = FDConnection1
@@ -247,7 +243,6 @@
     Top = 232
   end
   object Nastavenie: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
@@ -341,7 +336,6 @@
     end
   end
   object Zamest: TFDTable
-    Active = True
     IndexFieldNames = 'id;Priezvisko'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'zmest'
@@ -410,7 +404,6 @@
     Top = 56
   end
   object caslog: TFDTable
-    Active = True
     IndexFieldNames = 'id;deviceid;userid'
     Connection = FDConnection1
     Transaction = FDTransaction1
@@ -462,13 +455,15 @@
       FieldName = 'deviceid'
       Origin = 'deviceid'
     end
-    object caslogdovod: TIntegerField
-      FieldName = 'dovod'
-      Origin = 'dovod'
+    object caslogverifymode: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'verifymode'
+      Origin = 'verifymode'
     end
-    object caslogvstupc: TIntegerField
-      FieldName = 'vstupc'
-      Origin = 'vstupc'
+    object caslogaction: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'action'
+      Origin = 'action'
     end
   end
   object Dcislokarty: TDataSource
@@ -477,7 +472,6 @@
     Top = 96
   end
   object cislokarty: TFDTable
-    Active = True
     IndexFieldNames = 'ID'
     Connection = FDConnection1
     Transaction = FDTransaction1
@@ -510,11 +504,10 @@
   end
   object dbdovod: TDataSource
     DataSet = dovod
-    Left = 784
-    Top = 136
+    Left = 808
+    Top = 152
   end
   object dovod: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
@@ -543,7 +536,6 @@
     end
   end
   object jottment: TFDTable
-    Active = True
     IndexFieldNames = 'id'
     Connection = FDConnection1
     Transaction = FDTransaction1
